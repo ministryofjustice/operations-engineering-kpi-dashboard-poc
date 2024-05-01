@@ -1,0 +1,16 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+flask = "==3.0.0"
+gunicorn = "==21.2.0"
+psycopg2-binary = "2.9.9"
+plotly = "==5.21.0"
+dash = "==2.16.1"
+pandas = "==2.2.2"
+statsmodels = "==0.14.1"
+
+[requires]
+python_version = "3.12"
