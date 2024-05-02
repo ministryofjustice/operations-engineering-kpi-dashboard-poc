@@ -24,12 +24,21 @@ services:
     container_name: "postgres"
     ports:
       - 5432:5432
-
     environment:
       - POSTGRES_PASSWORD=admin
       - POSTGRES_USER=admin
       - POSTGRES_DB=admin
+    networks:
+      - kpi-dashboard
 
+  grafana:
+    build:
+      dockerfile: ./grafana/Dockerfile
+      context: ./
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
     networks:
       - kpi-dashboard
 

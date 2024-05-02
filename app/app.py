@@ -199,6 +199,7 @@ def add_data():
         ("SENTRY_DAILY_TRANSACTION_USAGE", datetime.date(2024, 4, 29), 413430),
         ("SENTRY_DAILY_TRANSACTION_USAGE", datetime.date(2024, 4, 30), 880825),
         ("SENTRY_DAILY_TRANSACTION_USAGE", datetime.date(2024, 5, 1), 792862),
+        ("SENTRY_DAILY_TRANSACTION_USAGE", datetime.date(2024, 5, 1), 783851),
         # REPOSITORIES_WITH_STANDARDS_LABEL
         ("REPOSITORIES_WITH_STANDARDS_LABEL", datetime.date(2024, 4, 20), 11),
         ("REPOSITORIES_WITH_STANDARDS_LABEL", datetime.date(2024, 4, 21), 11),
