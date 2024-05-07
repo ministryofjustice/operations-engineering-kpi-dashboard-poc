@@ -16,9 +16,20 @@ datasources:
       connMaxLifetime: 14400 # Grafana v5.4+
       postgresVersion: 903 # 903=9.3, 904=9.4, 905=9.5, 906=9.6, 1000=10
       timescaledb: false
-  - name: support-stats
+  - name: Support Stats
     uid: 1257c93b-f998-438c-a784-7e90fb94fb36
     url: /data/support-stats.csv
+    type: marcusolsson-csv-datasource
+    access: "proxy"
+    basicAuth: false
+    isDefault: false
+    editable: true
+    version: 1
+    jsonData:
+      storage: local
+  - name: GitHub Quota Usage
+    uid: 1257c93b-f998-438c-a784-7e90fb94fb3
+    url: /data/github_actions_private_and_internal.csv
     type: marcusolsson-csv-datasource
     access: "proxy"
     basicAuth: false
