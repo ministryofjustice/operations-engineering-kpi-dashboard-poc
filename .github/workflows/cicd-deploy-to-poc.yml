@@ -2,8 +2,6 @@ name: "♻️ Deploy to PoC Namespace"
 
 on:
   workflow_dispatch:
-  pull_request:
-    branches: [main]
   push:
     branches: [main]
 env:
@@ -75,4 +73,4 @@ jobs:
             --set app.deployment.env.POSTGRES_HOST=${POSTGRES_HOST} \
             --set app.deployment.env.POSTGRES_PORT=${POSTGRES_PORT} \
             --set app.deployment.image.repository=${ECR_REGISTRY}/${ECR_REPOSITORY} \
-            --set app.deployment.image.tag=${IMAGE_TAG} 
+            --set app.deployment.image.tag=${IMAGE_TAG}
