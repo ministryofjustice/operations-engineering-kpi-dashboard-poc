@@ -7,8 +7,7 @@ WORKDIR /home/operations-engineering-kpi-dashboard
 COPY Pipfile Pipfile
 COPY Pipfile.lock Pipfile.lock
 COPY app app
-COPY data data
-
+COPY example-data example-data
 
 RUN pip3 install --no-cache-dir pipenv
 RUN pipenv install --system --deploy --ignore-pipfile
