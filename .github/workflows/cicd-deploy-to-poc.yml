@@ -42,7 +42,7 @@ jobs:
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
-  deploy-to-dev:
+  deploy-to-poc:
     needs: build-push
     runs-on: ubuntu-latest
     container: alpine/k8s:1.23.17
@@ -74,3 +74,5 @@ jobs:
             --set app.deployment.env.POSTGRES_DB=${POSTGRES_DB} \
             --set app.deployment.env.POSTGRES_HOST=${POSTGRES_HOST} \
             --set app.deployment.env.POSTGRES_PORT=${POSTGRES_PORT} \
+            --set app.deployment.image.repository=${ECR_REGISTRY}/${ECR_REPOSITORY} \
+            --set app.deployment.image.tag=${IMAGE_TAG} 
