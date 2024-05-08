@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "kpi-dashboard.fullname" . }}
+  labels: {{- include "kpi-dashboard.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.app.deployment.replicaCount }}
+  selector:
+    matchLabels: {{- include "kpi-dashboard.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels: {{- include "kpi-dashboard.selectorLabels" . | nindent 8 }}
+    spec:
+      # serviceAccountName created by the Cloud Platform environment
+      serviceAccountName: cd-serviceaccount
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.app.deployment.image.repository }}:{{ .Values.app.deployment.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: POSTGRES_USER
+              value: {{ .Values.app.deployment.env.POSTGRES_USER | quote }}
+            - name: POSTGRES_PASSWORD
+              value:
+                {{ .Values.app.deployment.env.POSTGRES_PASSWORD | quote }}
+            - name: POSTGRES_DB
+              value: {{ .Values.app.deployment.env.POSTGRES_DB | quote }}
+            - name: POSTGRES_HOST
+              value: {{ .Values.app.deployment.env.POSTGRES_HOST | quote }}
+            - name: POSTGRES_PORT
+              value: {{ .Values.app.deployment.env.POSTGRES_PORT | quote }}
+
+          ports:
+            - name: http
+              containerPort: 80
