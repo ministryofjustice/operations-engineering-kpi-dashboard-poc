@@ -31,5 +31,16 @@ services:
     networks:
       - kpi-dashboard
 
+  grafana:
+    build:
+      dockerfile: ./grafana/Dockerfile
+      context: ./
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    networks:
+      - kpi-dashboard
+
 networks:
   kpi-dashboard:

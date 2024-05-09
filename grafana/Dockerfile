@@ -10,7 +10,7 @@ ENV GF_AUTH_ANONYMOUS_ORG_ROLE "Admin"
 ENV GF_INSTALL_PLUGINS="marcusolsson-csv-datasource"
 
 # Copy CSV Data Into Grafana
-COPY ./data /data/
+COPY ./example-data /data/
 
 # Add provisioning
 ADD ./grafana/provisioning /etc/grafana/provisioning
