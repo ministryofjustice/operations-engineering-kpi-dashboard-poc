@@ -27,4 +27,5 @@ app_config = SimpleNamespace(
         host=__get_env_var("POSTGRES_HOST"),
         port=__get_env_var("POSTGRES_PORT"),
     ),
+    api_key=__get_env_var("API_KEY"),
 )

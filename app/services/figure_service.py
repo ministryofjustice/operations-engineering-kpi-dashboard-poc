@@ -12,7 +12,7 @@ class FigureService:
 
     def get_number_of_repositories_with_standards_label_dashboard(self):
         number_of_repos_with_standards_label_df = pd.DataFrame(
-            self.database_service.get_indicator("REPOSITORIES_WITH_STANDARDS_LABEL"), columns=["timestamp", "count"]
+            self.database_service.get_indicator("STUBBED_REPOSITORIES_WITH_STANDARDS_LABEL"), columns=["timestamp", "count"]
         ).sort_values(by="timestamp", ascending=True)
 
         return px.line(
@@ -26,7 +26,7 @@ class FigureService:
 
     def get_number_of_repositories_archived_by_automation(self):
         number_of_repositories_archived_by_automation = pd.DataFrame(
-            self.database_service.get_indicator("REPOSITORIES_ARCHIVED_BY_AUTOMATION"), columns=["timestamp", "count"]
+            self.database_service.get_indicator("STUBBED_REPOSITORIES_ARCHIVED_BY_AUTOMATION"), columns=["timestamp", "count"]
         ).sort_values(by="timestamp", ascending=True)
 
         return px.line(
@@ -40,7 +40,7 @@ class FigureService:
 
     def get_sentry_transactions_used(self):
         sentry_transaction_quota_consumed = pd.DataFrame(
-            self.database_service.get_indicator("SENTRY_DAILY_TRANSACTION_USAGE"), columns=["timestamp", "count"]
+            self.database_service.get_indicator("STUBBED_SENTRY_DAILY_TRANSACTION_USAGE"), columns=["timestamp", "count"]
         ).sort_values(by="timestamp", ascending=True)
 
         return (
@@ -88,9 +88,8 @@ class FigureService:
                 github_actions_summed,
                 x="Date",
                 y="Quantity",
-                title="💥 GitHub Quota Usage - 28 Day Rolling Average",
-                trendline="rolling",
-                trendline_options=dict(window=28),
+                title="💥 GitHub Quota Usage",
+                trendline="ols",
                 template="plotly_dark",
                 hover_data=["Price Per Unit ($)"],
             )
