@@ -14,6 +14,7 @@ services:
       POSTGRES_PORT: 5432
       APP_SECRET_KEY: dev
       FLASK_DEBUG: true
+      API_KEY: test
     ports:
       - "4567:4567"
     networks:

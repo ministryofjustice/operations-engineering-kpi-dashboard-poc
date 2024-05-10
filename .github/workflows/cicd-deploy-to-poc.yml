@@ -14,6 +14,8 @@ env:
   ECR_REGISTRY: ${{ vars.DEVELOPMENT_ECR_REGISTRY }}
   ECR_REPOSITORY: ${{ vars.DEVELOPMENT_ECR_REPOSITORY }}
 
+  API_KEY: ${{ secrets.POC_API_KEY }}
+
   POSTGRES_USER: ${{secrets.POC_POSTGRES_USER}}
   POSTGRES_PASSWORD: ${{secrets.POC_POSTGRES_PASSWORD}}
   POSTGRES_DB: ${{secrets.POC_POSTGRES_DB}}
@@ -67,6 +69,7 @@ jobs:
             --timeout 10m \
             --namespace ${KUBE_NAMESPACE} \
             --values=helm/kpi-dashboard/values-poc.yaml \
+            --set app.deployment.env.API_KEY=${API_KEY} \
             --set app.deployment.env.POSTGRES_USER=${POSTGRES_USER} \
             --set app.deployment.env.POSTGRES_PASSWORD=${POSTGRES_PASSWORD} \
             --set app.deployment.env.POSTGRES_DB=${POSTGRES_DB} \
