@@ -42,16 +42,22 @@ def create_dashboard(figure_service: FigureService):
     def dashboard():
         return html.Div(
             children=[
+                html.H1("🤩 Live Data 🤩"),
                 dcc.Graph(
                     figure=figure_service.get_number_of_repositories_with_standards_label_dashboard(),
+                    style={"width": "100%", "height": "500px", "display": "inline-block"},
+                ),
+                html.H1("🙈 Stub Data 🙈"),
+                dcc.Graph(
+                    figure=figure_service.get_stubbed_number_of_repositories_with_standards_label_dashboard(),
                     style={"width": "33%", "height": "500px", "display": "inline-block"},
                 ),
                 dcc.Graph(
-                    figure=figure_service.get_number_of_repositories_archived_by_automation(),
+                    figure=figure_service.get_stubbed_number_of_repositories_archived_by_automation(),
                     style={"width": "33%", "height": "500px", "display": "inline-block"},
                 ),
                 dcc.Graph(
-                    figure=figure_service.get_sentry_transactions_used(),
+                    figure=figure_service.get_stubbed_sentry_transactions_used(),
                     style={"width": "33%", "height": "500px", "display": "inline-block"},
                 ),
                 dcc.Graph(

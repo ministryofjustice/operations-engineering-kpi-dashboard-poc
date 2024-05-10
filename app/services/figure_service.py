@@ -12,6 +12,20 @@ class FigureService:
 
     def get_number_of_repositories_with_standards_label_dashboard(self):
         number_of_repos_with_standards_label_df = pd.DataFrame(
+            self.database_service.get_indicator("REPOSITORIES_WITH_STANDARDS_LABEL"), columns=["timestamp", "count"]
+        ).sort_values(by="timestamp", ascending=True)
+
+        return px.line(
+            number_of_repos_with_standards_label_df,
+            x="timestamp",
+            y="count",
+            title="🏷️ Number of Repositories With Standards Label",
+            markers=True,
+            template="plotly_dark",
+        ).add_hline(y=0)
+
+    def get_stubbed_number_of_repositories_with_standards_label_dashboard(self):
+        number_of_repos_with_standards_label_df = pd.DataFrame(
             self.database_service.get_indicator("STUBBED_REPOSITORIES_WITH_STANDARDS_LABEL"), columns=["timestamp", "count"]
         ).sort_values(by="timestamp", ascending=True)
 
@@ -24,7 +38,7 @@ class FigureService:
             template="plotly_dark",
         ).add_hline(y=0)
 
-    def get_number_of_repositories_archived_by_automation(self):
+    def get_stubbed_number_of_repositories_archived_by_automation(self):
         number_of_repositories_archived_by_automation = pd.DataFrame(
             self.database_service.get_indicator("STUBBED_REPOSITORIES_ARCHIVED_BY_AUTOMATION"), columns=["timestamp", "count"]
         ).sort_values(by="timestamp", ascending=True)
@@ -38,7 +52,7 @@ class FigureService:
             template="plotly_dark",
         ).add_hline(y=0)
 
-    def get_sentry_transactions_used(self):
+    def get_stubbed_sentry_transactions_used(self):
         sentry_transaction_quota_consumed = pd.DataFrame(
             self.database_service.get_indicator("STUBBED_SENTRY_DAILY_TRANSACTION_USAGE"), columns=["timestamp", "count"]
         ).sort_values(by="timestamp", ascending=True)
