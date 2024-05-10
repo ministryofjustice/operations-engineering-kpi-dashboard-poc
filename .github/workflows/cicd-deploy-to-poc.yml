@@ -2,6 +2,7 @@ name: "♻️ Deploy to PoC Namespace"
 
 on:
   workflow_dispatch:
+  pull_request:
   push:
     branches: [main]
 env:
