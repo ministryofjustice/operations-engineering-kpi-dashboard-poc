@@ -70,7 +70,7 @@ jobs:
             --timeout 10m \
             --namespace ${KUBE_NAMESPACE} \
             --values=helm/kpi-dashboard/values-poc.yaml \
-            -- set app.deployment.env.API_KEY=${API_KEY} \
+            --set app.deployment.env.API_KEY=${API_KEY} \
             --set app.deployment.env.POSTGRES_USER=${POSTGRES_USER} \
             --set app.deployment.env.POSTGRES_PASSWORD=${POSTGRES_PASSWORD} \
             --set app.deployment.env.POSTGRES_DB=${POSTGRES_DB} \
