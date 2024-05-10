@@ -18,6 +18,8 @@ spec:
           image: "{{ .Values.app.deployment.image.repository }}:{{ .Values.app.deployment.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: IfNotPresent
           env:
+            - name: API_KEY 
+              value: {{ .Values.app.deployment.env.API_KEY | quote }}
             - name: POSTGRES_USER
               value: {{ .Values.app.deployment.env.POSTGRES_USER | quote }}
             - name: POSTGRES_PASSWORD
