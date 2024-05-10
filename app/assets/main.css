@@ -1,4 +1,11 @@
 
 body {
     margin: 0px;
+    font-family: monospace;
+    color: white;
+}
+
+h1 {
+    padding-top: 20px;
+    margin-top: 0px;
 }
